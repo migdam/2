@@ -222,6 +222,43 @@ docker run -p 8501:8501 -e OPENAI_API_KEY='your-key' strategy-mapper
 - The local SQLite database stores embeddings locally
 - No data is sent to external services except OpenAI's API
 
+## 🧪 Testing
+
+### Running Tests
+
+The project includes comprehensive automated tests:
+
+```bash
+# Run all tests
+./run_tests.sh
+
+# Run unit tests only
+./run_tests.sh unit
+
+# Run integration tests only
+./run_tests.sh integration
+
+# Run with coverage report
+./run_tests.sh coverage
+```
+
+### Test Coverage
+
+- **Unit Tests**: 40+ tests covering database, AI, and utils layers
+- **Integration Tests**: 15+ tests for end-to-end workflows
+- **Mocked APIs**: All OpenAI calls are mocked for fast, cost-free testing
+- **Coverage Target**: 80%+
+
+### CI/CD
+
+Tests run automatically via GitHub Actions on:
+- Push to main/develop branches
+- Pull requests
+- Multiple Python versions (3.8, 3.9, 3.10, 3.11)
+- Multiple OS (Ubuntu, macOS)
+
+See [TESTING.md](TESTING.md) for detailed testing documentation.
+
 ## 🐛 Troubleshooting
 
 **Database not initialized?**
@@ -237,6 +274,15 @@ python db/init_db.py
 **Import errors?**
 ```bash
 pip install -r requirements.txt
+```
+
+**Test failures?**
+```bash
+# Install test dependencies
+pip install -r requirements-dev.txt
+
+# Run tests with verbose output
+./run_tests.sh all -vv
 ```
 
 ## 📝 License
